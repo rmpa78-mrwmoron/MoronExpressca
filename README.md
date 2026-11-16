@@ -12,6 +12,6 @@ Herramienta tecnológica interactiva desarrollada en **Streamlit** como parte de
 
 ## 🛠️ Cómo desplegar en GitHub y Streamlit Community Cloud
 1. Sube estos tres archivos (`app.py`, `requirements.txt`, `README.md`) a un repositorio público en **GitHub**.
-2. Entra en [Streamlit Cloud](https://share.streamlit.io/), haz clic en **New App**.
+2. Entra en [Streamlit Community Cloud](https://share.streamlit.io/), haz clic en **New App**.
 3. Selecciona tu repositorio de GitHub, la rama `main` y el archivo principal `app.py`.
 4. Haz clic en **Deploy** ¡y tu herramienta en la nube estará lista y accesible mediante un enlace público para trabajadores y clientes!
