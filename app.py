@@ -88,9 +88,11 @@ menu = st.sidebar.radio(
 )
 
 st.sidebar.markdown("---")
-st.sidebar.info("💡 **Solución Tecnológica de Tesis**
-Optimización de Procesos Operativos y Administrativos
-Municipio Juan José Mora, Edo. Carabobo.")
+st.sidebar.info(
+    "💡 **Solución Tecnológica de Tesis**\n"
+    "Optimización de Procesos Operativos y Administrativos\n"
+    "Municipio Juan José Mora, Edo. Carabobo."
+)
 
 # ----------------------------------------------------
 # 1. INICIO & DIAGNÓSTICO
@@ -142,8 +144,9 @@ elif menu == "📱 Pre-Registro & Generador QR (Cliente)":
         submitted = st.form_submit_button("Generar Código QR de Envío 🚀")
         
         if submitted:
+            import random
             if remitente and destinatario and cedula_rem:
-                guía_gen = f"MRW-{pd.np.random.randint(100000, 999999)}"
+                guia_gen = f"MRW-{random.randint(100000, 999999)}"
                 qr_data = f"Guia: {guia_gen} | Rem: {remitente} ({cedula_rem}) | Dest: {destinatario} | Serv: {tipo_servicio}"
                 
                 # Generar QR
@@ -173,7 +176,6 @@ elif menu == "📱 Pre-Registro & Generador QR (Cliente)":
                     👉 *Muestre la pantalla de su teléfono o imprima este código QR al llegar a la agencia Morón Express C.A. El operador escaneará sus datos reduciendo el tiempo en taquilla de 4.10 min a menos de 1.5 min.*
                     """)
                 
-                # Agregar automáticamente al session_state de inventario temporal
                 nuevo_registro = {
                     "Guía": guia_gen,
                     "Remitente": remitente,
@@ -198,7 +200,6 @@ elif menu == "📦 Inventario & Bodega Alfanumérica (Personal)":
     
     st.subheader("📋 Base de Datos de Envíos y Ubicación Actual")
     
-    # Filtro de búsqueda rápida
     filtro_guia = st.text_input("🔍 Buscar por Número de Guía o Cédula:", "")
     df_mostrar = st.session_state.envios_db
     if filtro_guia:
@@ -294,8 +295,8 @@ elif menu == "💬 Plantillas WhatsApp & Mensajería":
             
         st.text_area("Texto listo para enviar:", value=mensaje_final, height=150)
         
-        # Enlace directo a WhatsApp Web / API
-        whatsapp_url = f"https://wa.me/{cli_telefono}?text={urllib.parse.quote(mensaje_final) if 'urllib' in globals() else mensaje_final}"
+        import urllib.parse
+        whatsapp_url = f"https://wa.me/{cli_telefono}?text={urllib.parse.quote(mensaje_final)}"
         st.markdown(f"""
         <a href="{whatsapp_url}" target="_blank">
             <button style="background-color:#25D366; color:white; padding:10px 20px; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">
@@ -310,8 +311,6 @@ elif menu == "💬 Plantillas WhatsApp & Mensajería":
 elif menu == "📊 Panel Gerencial de Tiempos":
     st.markdown('<div class="main-header">Panel Gerencial y Métricas de Rendimiento</div>', unsafe_allow_html=True)
     st.markdown('<div class="sub-header">Monitoreo de tiempos de atención y control de calidad post-optimización</div>', unsafe_allow_html=True)
-    
-    import numpy as np
     
     col1, col2, col3 = st.columns(3)
     with col1:
